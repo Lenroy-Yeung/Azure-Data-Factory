@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf0110"
+		},
+		"Datasouce_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Datasouce'"
+		},
+		"External_ControlTable_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'External_ControlTable'"
+		},
+		"Synapsesqlpool_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Synapsesqlpool'"
+		},
+		"linkedService0110_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedService0110'"
+		},
+		"Synapsesqlpool_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake0110.dfs.core.windows.net"
+		},
+		"linkedService0110_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake0110.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf0110_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Datasouce_connectionString": {
+						"value": "[parameters('Datasouce_connectionString')]"
+					},
+					"Synapsesqlpool_accountKey": {
+						"value": "[parameters('Synapsesqlpool_accountKey')]"
+					},
+					"linkedService0110_accountKey": {
+						"value": "[parameters('linkedService0110_accountKey')]"
+					},
+					"External_ControlTable_connectionString": {
+						"value": "[parameters('External_ControlTable_connectionString')]"
+					},
+					"Synapsesqlpool_properties_typeProperties_url": {
+						"value": "[parameters('Synapsesqlpool_properties_typeProperties_url')]"
+					},
+					"linkedService0110_properties_typeProperties_url": {
+						"value": "[parameters('linkedService0110_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

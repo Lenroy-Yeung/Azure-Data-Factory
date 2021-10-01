@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf0110"
+		},
+		"Datasouce_connectionString": {
+			"value": ""
+		},
+		"External_ControlTable_connectionString": {
+			"value": ""
+		},
+		"Synapsesqlpool_accountKey": {
+			"value": ""
+		},
+		"linkedService0110_accountKey": {
+			"value": ""
+		},
+		"Synapsesqlpool_properties_typeProperties_url": {
+			"value": "https://datalake0110.dfs.core.windows.net"
+		},
+		"linkedService0110_properties_typeProperties_url": {
+			"value": "https://datalake0110.dfs.core.windows.net"
+		}
+	}
+}
